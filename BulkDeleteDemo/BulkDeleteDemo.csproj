@@ -38,15 +38,15 @@
   <ItemGroup>
     <Reference Include="Devart.Data, Version=5.0.2120.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Devart.Data.dll</HintPath>
+      <HintPath>D:\Work\Source\Lib\Devart.Data.dll</HintPath>
     </Reference>
     <Reference Include="Devart.Data.PostgreSql, Version=7.12.1328.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Devart.Data.PostgreSql.dll</HintPath>
+      <HintPath>D:\Work\Source\Lib\Devart.Data.PostgreSql.dll</HintPath>
     </Reference>
     <Reference Include="Devart.Data.PostgreSql.Entity.EF6, Version=7.12.1328.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Devart.Data.PostgreSql.Entity.EF6.dll</HintPath>
+      <HintPath>D:\Work\Source\Lib\Devart.Data.PostgreSql.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
