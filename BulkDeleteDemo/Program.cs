@@ -16,18 +16,15 @@ namespace BulkDeleteDemo
             var connectionString = ConfigurationManager.ConnectionStrings["Demo"].ConnectionString;
             var connection = new PgSqlConnection(connectionString);
             var context = new DemoDbContext(connection);
-            var clientToCreate = new Client { Id = 1, Name = "test"};
-            var clientAffectedToCreate = new ClientAffected { Id = 1, Client_Id = 1 };
-            context.Clients.Add(clientToCreate);
-            context.ClientAffected.Add(clientAffectedToCreate);
-            context.SaveChanges();
 
-            var clientAffectedToDelete = new ClientAffected { Client_Id = 1 };
+            var clientToCreate = new Client { Name = "test" };
             try
             {
-                context.BulkDelete<ClientAffected>(new List<ClientAffected> { clientAffectedToDelete }, options =>
+                context.BulkInsert<Client>(new List<Client> { clientToCreate }, options =>
                 {
-                    options.ColumnPrimaryKeyExpression = u => u.Client_Id;
+                    options.AutoMapOutputDirection = true;
+                    options.InsertIfNotExists = true;
+                    options.BatchSize = 100;
                 });
             }
             catch (Exception e)
