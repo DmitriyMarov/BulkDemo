@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1EA1E941-2B6B-4346-A55E-6527E5752715}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BulkDeleteDemo</RootNamespace>
-    <AssemblyName>BulkDeleteDemo</AssemblyName>
+    <RootNamespace>BulkDemo</RootNamespace>
+    <AssemblyName>BulkDemo</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
