@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Z.EntityFramework.Plus;
 
 namespace BulkDeleteDemo
 {
@@ -18,14 +19,13 @@ namespace BulkDeleteDemo
             var context = new DemoDbContext(connection);
 
             var clientToCreate = new Client { Name = "test" };
+            var clientToCreate1 = new Client { Name = "test" };
+            context.Clients.Add(clientToCreate);
+            context.Clients.Add(clientToCreate1);
+            context.SaveChanges();
             try
-            {
-                context.BulkInsert<Client>(new List<Client> { clientToCreate }, options =>
-                {
-                    options.AutoMapOutputDirection = true;
-                    options.InsertIfNotExists = true;
-                    options.BatchSize = 100;
-                });
+            {               
+                var result = context.Clients.WhereBulkContains(new List<Client> { clientToCreate }, mf => new { mf.Id }).ToList();
             }
             catch (Exception e)
             {

@@ -15,7 +15,11 @@ namespace BulkDeleteDemo
 
         public IDbSet<ClientAffected> ClientAffected { get; set; }
 
-        public IDbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
+
+        public IDbSet<Entity> Entities { get; set; }
+
+        public IDbSet<ClientToEntities> ClientsToEntities { get; set; }
 
         public DemoDbContext(PgSqlConnection connection) : base(connection, true)
         {
@@ -27,6 +31,8 @@ namespace BulkDeleteDemo
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new ClientAffectedConfiguration());
             modelBuilder.Configurations.Add(new ClientConfiguration());
+            modelBuilder.Configurations.Add(new EntityConfiguration());
+            modelBuilder.Configurations.Add(new ClientToEntitiesConfiguration());
         }
     }
 }
