@@ -18,14 +18,27 @@ namespace BulkDeleteDemo
             var connection = new PgSqlConnection(connectionString);
             var context = new DemoDbContext(connection);
 
-            var clientToCreate = new Client { Name = "test" };
-            var clientToCreate1 = new Client { Name = "test" };
+            var clientToCreate = new Client { Name = "test1" };
+            var clientToCreate1 = new Client { Name = "test2" };
             context.Clients.Add(clientToCreate);
             context.Clients.Add(clientToCreate1);
             context.SaveChanges();
             try
-            {               
-                var result = context.Clients.WhereBulkContains(new List<Client> { clientToCreate }, mf => new { mf.Id }).ToList();
+            {
+                var selectDbSet = context.Set<Client>().AsNoTracking();
+                var result = selectDbSet.WhereBulkContains(new List<Client> { clientToCreate }, mf => new { mf.Name }).ToList();
+                var itemsToRemove = context.Clients.ToList();
+                if (!itemsToRemove.Any())
+                {
+                    return;
+                }
+
+                foreach (var item in itemsToRemove)
+                {
+                    context.Clients.Remove(item);
+                }
+
+                context.SaveChanges();
             }
             catch (Exception e)
             {
